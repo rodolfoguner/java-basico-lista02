@@ -7,19 +7,35 @@ public class Candidato {
 
 	private int id;
 	private String nome;
-	private List<Candidato> candidatos = new ArrayList<Candidato>();
+	private int votos = 0;
 	
 	public Candidato(int id, String nome) {
 		this.id = id;
 		this.nome = nome;
 	}
 
-	public List<Candidato> getCandidatos() {
-		return candidatos;
+	public int getId() {
+		return id;
 	}
 
-	public void setCandidatos(List<Candidato> candidatos) {
-		this.candidatos = candidatos;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public int getVotos() {
+		return votos;
+	}
+
+	public void setVotos(int votos) {
+		this.votos += votos;
 	}
 	
 }

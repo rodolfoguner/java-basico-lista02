@@ -2,6 +2,8 @@ package br.fai.ex01;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.IOException;
+import java.lang.Runtime;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,12 +15,54 @@ public class Main {
 	
 	private void start() {
 		
-		List<Integer> votos = new ArrayList<Integer>();
-		Scanner scanner = new Scanner(System.in);
+		HashMap<Integer, Candidato> candidatos = new HashMap<Integer, Candidato>();
+		candidatos.put(1, new Candidato(1, "Joao"));;
+		candidatos.put(2, new Candidato(2, "Maria"));
+		candidatos.put(3, new Candidato(3, "Jose"));
+		candidatos.put(4, new Candidato(4, "Antonio"));
+		candidatos.put(5, new Candidato(5, "Tibursinho"));
+
+		Scanner scanner = new Scanner(System.in);		
 		
 		while (true) {
 			int voto;
 			
+			System.out.println("Lista de candidatos: ");
+			for (Candidato candidato: candidatos.values()) {
+				System.out.print(candidato.getId() + ". " + candidato.getNome()+ "\t");
+			}
+			
+			System.out.print("\nDigite seu voto ou 0 para encerrar votação: ");
+			voto = scanner.nextInt();
+			
+			switch (voto) {
+			case 1: {
+				candidatos.get(voto).setVotos(1);
+				break;
+			}
+			case 2: {
+				candidatos.get(voto).setVotos(1);
+				break;
+			}
+			case 3: {
+				candidatos.get(voto).setVotos(1);
+				break;
+			}
+			case 4: {
+				candidatos.get(voto).setVotos(1);
+				break;
+			}
+			case 5: {
+				candidatos.get(voto).setVotos(1);
+				break;
+			}
+			default:
+				System.out.println("Candidato inválido.");
+			}
+			
+			if (voto == 0) {
+				break;
+			}
 		}
 		
 		
