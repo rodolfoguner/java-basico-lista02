@@ -1,6 +1,7 @@
 package br.fai.ex01;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Candidato {
@@ -38,4 +39,17 @@ public class Candidato {
 		this.votos += votos;
 	}
 	
+	public static Candidato verificaGanhador(HashMap<Integer, Candidato> candidatos) {
+		int votos = -1;
+		Candidato ganhador = null;
+		
+		for (Candidato candidato: candidatos.values()) {
+			if (candidato.getVotos() > votos) {
+				ganhador = candidato;
+			}
+		}
+		
+		return ganhador;
+	}
+ 	
 }
