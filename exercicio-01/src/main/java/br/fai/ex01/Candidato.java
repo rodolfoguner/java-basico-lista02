@@ -8,11 +8,14 @@ public class Candidato {
 
 	private int id;
 	private String nome;
-	private int votos = 0;
+	private int votos;
+	
+	public Candidato() {}
 	
 	public Candidato(int id, String nome) {
 		this.id = id;
 		this.nome = nome;
+		this.votos = 0;
 	}
 
 	public int getId() {
@@ -39,17 +42,32 @@ public class Candidato {
 		this.votos += votos;
 	}
 	
-	public static Candidato verificaGanhador(HashMap<Integer, Candidato> candidatos) {
-		int votos = -1;
-		Candidato ganhador = null;
-		
-		for (Candidato candidato: candidatos.values()) {
-			if (candidato.getVotos() > votos) {
-				ganhador = candidato;
+	public static List<Candidato> verificaGanhador(HashMap<Integer, Candidato> candidatos) {
+		List<Candidato> ranking = Candidato.tranformaCandidatosLista(candidatos);
+		for (int i = 0; i < (ranking.size() - 1); i++) {
+			Candidato aux;
+			for (int j = 0; (j < ranking.size() - 1); j++) {
+				if (ranking.get(i).getVotos() < ranking.get(j + 1).getVotos()) {
+					aux = ranking.get(i);
+					ranking.set(i, ranking.get(j + 1));
+					ranking.set(j + 1, aux);
+				}
 			}
 		}
 		
-		return ganhador;
+		return ranking;
+	}
+	
+	public static List<Candidato> tranformaCandidatosLista(HashMap<Integer, Candidato> candidatos) {
+		
+		List<Candidato> rankingCandidatos = new ArrayList<Candidato>();
+		
+		for (Candidato candidato: candidatos.values()) {
+			rankingCandidatos.add(candidato);
+		}
+		
+		return rankingCandidatos;
+		
 	}
  	
 }

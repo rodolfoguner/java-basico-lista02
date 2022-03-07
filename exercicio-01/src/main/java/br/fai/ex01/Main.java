@@ -35,6 +35,10 @@ public class Main {
 			System.out.print("\nDigite seu voto ou 0 para encerrar votação: ");
 			voto = scanner.nextInt();
 			
+			if (voto == 0) {
+				break;
+			}
+			
 			switch (voto) {
 			case 1: {
 				candidatos.get(voto).setVotos(1);
@@ -59,12 +63,24 @@ public class Main {
 			default:
 				System.out.println("Candidato inválido.");
 			}
-			
-			if (voto == 0) {
-				break;
-			}
 		}
 		
+		exibeGanhador(candidatos);
+		
+		
+	}
+	
+	private void exibeGanhador(HashMap<Integer, Candidato> candidatos) {
+		
+		List<Candidato> candidatoGanhador = Candidato.verificaGanhador(candidatos);
+		int i = 0;
+		
+		System.out.println("O candidato eleito é o " + candidatoGanhador.get(0).getNome());
+		
+		for (Candidato candidato: candidatoGanhador) {
+			i += 1;
+			System.out.println("Lugar " + i + ": Candidato " + candidato.getNome() + " - " + candidato.getVotos() + " votos");
+		}
 		
 	}
 }
