@@ -1,9 +1,6 @@
 package br.fai.ex01;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.io.IOException;
-import java.lang.Runtime;
 import java.util.List;
 import java.util.Scanner;
 
